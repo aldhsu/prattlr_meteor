@@ -13,6 +13,6 @@ var postsData = [
 
 Template.postsList.helpers({
   posts: function() {
-    return Posts.find().fetch();
+    return Posts.find({}, {sort: {submitted: -1}});
   }
 })

@@ -1,10 +1,19 @@
 Template.postItem.helpers({
   domain: function() {
-    var $a = $('<a>');
-    $a.attr('href', this.url);
-    return $a[0].hostname;
+    var a = document.createElement('a');
+    a.href = this.url;
+    return a.hostname;
   },
-  _id: function() {
-    console.log(this)
+  ownPost: function() {
+    console.log(this.userId);
+    console.log(Meteor.userId());
+    if (this.userId) {
+      return this.userId == Meteor.userId();
+    } else {
+      return false;
+    }
+  },
+  commentsCount: function() {
+    return Comments.find({postId: this._id}).count();
   }
 })
