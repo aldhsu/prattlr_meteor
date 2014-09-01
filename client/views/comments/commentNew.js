@@ -1,11 +1,12 @@
 Template.commentNew.events({
-  'submit form': function(e) {
+  'submit form': function(e, template) {
     e.preventDefault();
-
+    console.log('submitting');
+    console.log(template);
     var $body = $(e.target).find('[name=body]');
     var comment = {
       body: $body.val(),
-      postId: this.template.data._id
+      postId: template.data._id
     };
 
     Meteor.call('comment', comment, function(error, commentId) {

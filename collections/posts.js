@@ -29,19 +29,20 @@ Meteor.methods({
       title: postAttributes.title + (this.isSimulation ? '(client)' : '(server)'),
       userId: user._id,
       author: user.username,
-      submitted: new Date().getTime()
+      submitted: new Date().getTime(),
+      commentsCount: 0
     });
     // test wait for 5 seconds
-    console.log('posting');
-    if (! this.isSimulation) {
-      console.log("running sim");
-      var Future = Npm.require('fibers/future');
-      var future = new Future();
-      Meteor.setTimeout(function() {
-        future.return();
-      }, 5000);
-      future.wait();
-    }
+    // console.log('posting');
+    // if (! this.isSimulation) {
+    //   console.log("running sim");
+    //   var Future = Npm.require('fibers/future');
+    //   var future = new Future();
+    //   Meteor.setTimeout(function() {
+    //     future.return();
+    //   }, 5000);
+    //   future.wait();
+    // }
 
     var postId = Posts.insert(post);
 

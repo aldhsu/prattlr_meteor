@@ -11,5 +11,6 @@ accounts-github
 backbone
 iron:router
 sacha:spin
-accounts-ui-bootstrap-dropdown
 accounts-password
+accounts-ui-bootstrap-dropdown
+
